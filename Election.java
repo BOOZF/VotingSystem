@@ -12,7 +12,7 @@ public class Election{
     public void addCandidate(Candidate candidate) {
         this.candidates.add(candidate);
     }
-
+    // Test
     public Candidate getWinner(){
         Candidate winner = null;
         int maxVotes = 0;
