@@ -16,6 +16,9 @@ public class VoteRecorder {
         }
     }
 
+    public int[] getvoteCounts(){
+        return voteCounts;
+    }
     public void printResults() {
         for (int i = 0; i < candidates.length; i++) {
             System.out.println(candidates[i] + ": " + voteCounts[i] + " votes");
