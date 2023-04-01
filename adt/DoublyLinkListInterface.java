@@ -1,4 +1,5 @@
 package adt;
 
-public class DoublyLinkListInterface {
+interface DoublyLinkListInterface {
+
 }
