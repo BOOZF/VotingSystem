@@ -2,7 +2,7 @@ package adt;
 
 import java.util.Collection;
 
-public class PriorityQueue <T extends Comparable<T>> implements PriorityQueueInterface<T extends Comparable<T>>{
+public class PriorityQueue <T extends Comparable<T>> implements PriorityQueueInterface<T> {
 
     // Logs the number of elements in binary heap
     private int heapSize = 0;
@@ -103,6 +103,15 @@ public class PriorityQueue <T extends Comparable<T>> implements PriorityQueueInt
     }
 
     @Override
+    public boolean update(T element){
+        if (!contains(element)) return false;
+
+        remove(element);
+        add(element);
+        return true;
+    }
+
+    @Override
     public boolean add(T newEntry){
         if (newEntry == null) {return false;}
 
@@ -142,7 +151,7 @@ public class PriorityQueue <T extends Comparable<T>> implements PriorityQueueInt
         }
     }
 
-    // Top Down approach
+    // Top-Down approach
     private void sink(int nodeIndex){
         while(true){
             // Refer to the neighboring nodes
@@ -182,7 +191,7 @@ public class PriorityQueue <T extends Comparable<T>> implements PriorityQueueInt
     public boolean remove(T element){
         if (element == null) return false;
 
-        // Removes element if it exists in the heap array and it matches the input value
+        // Removes element if it exists in the heap array, and it matches the input value
         for(int i = 0; i < this.heapSize; i++) {
             if (element.equals(heap[i])){
                 removeAt(i);
@@ -220,6 +229,6 @@ public class PriorityQueue <T extends Comparable<T>> implements PriorityQueueInt
 
 
     }
-
+    // --------------------------------------------------------------------------------------------------------------
 
 }

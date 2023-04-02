@@ -23,7 +23,7 @@ public interface PriorityQueueInterface<T extends Comparable<T>> {
     boolean contains(T element);
 
     // Rearrange the PQ since the nature of vote count is that it'll change. Returns true if successfully update, runs add if the element is not in PQ
-    void update(T element);
+    boolean update(T element);
 
     // Removes and return the element with the highest priority
     T poll();
