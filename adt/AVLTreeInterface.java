@@ -1,34 +1,28 @@
-package adt;
-
 public interface AVLTreeInterface<T extends Comparable<T>> {
-    // Remove a node with data value from the AVL Tree
-    public void remove(T data);
 
-    void reset();
+    public boolean contains(String ID);
 
-    // Check if the AVL Tree contains a node with data value
-    public boolean contains(T data);
+    public boolean isEmpty();
 
-    // Get the height of the AVL Tree
-    public int height();
+    /* Make the tree logically empty */ public void makeEmpty();
 
-    // Vote for a candidate
-    public void voteFor(T candidate);
+    /* Function to insert data */ public void insertV(String data);
 
-    public int getVotes(T candidate);
+    /* Function to insert data */ public void insertC(String data);
 
-    AVLTree.List<T> getRanking();
+    public void deleteC(String data);
 
-    // Get the size of the AVL Tree
-    public int size();
+    public void deleteV(String data);
 
-    // Print the AVL Tree in order traversal
-    public void print();
+    /* Functions to search for an element */ public boolean search(String val);
 
-    void clearVotes();
+    public void castVote(String voterID, String candidateID);
 
-    void add(T data);
+    public void cancelVote(String voterID, String candidateID);
 
-    T getWinner();
+    public int getVoteCount(String candidateID);
+
+    public AVLTree.List<String> getList();
+
+    public boolean checkDuplicate(String ID);
 }
-
