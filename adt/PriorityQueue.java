@@ -1,6 +1,6 @@
 package adt;
 
-import java.util.Collection;
+
 
 public class PriorityQueue <T extends Comparable<T>> implements PriorityQueueInterface<T> {
 
@@ -38,13 +38,6 @@ public class PriorityQueue <T extends Comparable<T>> implements PriorityQueueInt
         for (int i = Math.max(0, (heapSize/2)-1); i >= 0; i--){
             sink(i);
         }
-    }
-
-    // Construct a heap with elements (Object Collections) provided
-    public PriorityQueue(Collection<T> elements){
-        this(elements.size());
-        for( T element : elements) add(element);
-
     }
 
     // --------------------------------------------------------------------------------
