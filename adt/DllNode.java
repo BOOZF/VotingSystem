@@ -83,42 +83,39 @@ public class DllNode<T extends Comparable<T>> implements DoublyLinkListInterface
     }
 
 
-    @Override
-    public boolean contains(T entry)//Find whether the entry is inside in the list or not?
+    @Override       //search if the entry is inside in the list
+    public boolean contains(T entry)
     {
         if (entry == null || isEmpty()) {
             return false;
         }
 
         Voter targetVoter = (Voter) entry;
-
         DllNode<T> currentNode = next;
 
         while (currentNode != null) {
-            if (currentNode.data.equals(targetVoter)) {
-                return true;
-            }
-
+            if (currentNode.data.compareTo(targetVoter) == 0) {return true;}
             currentNode = currentNode.next;
         }
-
         return false;
     }
 
-    @Override
+
+
+    @Override       // clear the whole list
     public void clear(){
         next = null;
         prev = null;
         size = 0;
     }
 
-    @Override
+    @Override       // check if the list is empty
     public boolean isEmpty(){
         return size == 0;
     };
 
     @Override
-    public T getEntry(T entry){
+    public T getEntry(T entry){     // get the entry in the list
         if (entry == null || isEmpty()) {
             return null;
         }
@@ -152,7 +149,7 @@ public class DllNode<T extends Comparable<T>> implements DoublyLinkListInterface
             currentIndex++;
         }
 
-        return (T) currentNode.data
+        return (T) currentNode.data;
     }
 
     // dk how to use
