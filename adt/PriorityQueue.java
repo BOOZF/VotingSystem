@@ -2,7 +2,7 @@ package adt;
 
 
 
-public class PriorityQueue <T extends Comparable<T>> implements PriorityQueueInterface<T> {
+public class PriorityQueue<T extends Comparable<T>> implements PriorityQueueInterface<T> {
 
     // Logs the number of elements in binary heap
     private int heapSize = 0;
@@ -20,14 +20,14 @@ public class PriorityQueue <T extends Comparable<T>> implements PriorityQueueInt
 
     // This initializes an empty heap list with specified capacity
     public PriorityQueue(int size){
-        heap = (T[]) new Object[size];
+        heap = (T[]) new Comparable[size];
     }
 
     // Construct a heap with elements (Array) provided
     public PriorityQueue(T[] elements){
         // 1. Copy the array size to heap size
         heapSize = heapCapacity = elements.length;
-        heap = (T[]) new Object[heapCapacity];
+        heap = (T[]) new Comparable[heapCapacity];
 
         // 2. Copy the element from array into heap
         for(int i = 0; i < heapSize; i++){
@@ -120,12 +120,19 @@ public class PriorityQueue <T extends Comparable<T>> implements PriorityQueueInt
         return true;
     }
 
-    private boolean less(int i, int j){
+    public T get(int i){
+        if (this.isEmpty()){
+            return null;
+        }
+        return heap[i];
+    }
+
+    private boolean more(int i, int j){
         // Checks the nodes are valid or not by comparing them
 
         T node1 = heap[i];
         T node2 = heap[j];
-        return node1.compareTo(node2) <= 0;
+        return node1.compareTo(node2) >= 0;
     }
 
     // Bottom Up approach
@@ -134,8 +141,8 @@ public class PriorityQueue <T extends Comparable<T>> implements PriorityQueueInt
         // Gets the index of the parent of the node
         int parent = (nodeIndex-1) / 2;
 
-        // Keep moving (Swimming) upward of the heap until the node is not less than it's parent
-        while (nodeIndex > 0 && less(nodeIndex, parent)) {
+        // Keep moving (Swimming) upward of the heap until the node is not more than it's parent
+        while (nodeIndex > 0 && more(nodeIndex, parent)) {
             // Change current node to
             swap(parent, nodeIndex);
             nodeIndex = parent;
@@ -153,14 +160,14 @@ public class PriorityQueue <T extends Comparable<T>> implements PriorityQueueInt
             int smallest = left; // Assume the left node is the smallest (Heap index pos theory)
 
             // Find left or right node is the smallest
-            // Convert right node to left if left is larger than right
-            if (right < heapSize && less(right, left)){
+            // Convert right node to left if right is larger than left
+            if (right < heapSize && more(right, left)){
                 smallest = right;
             }
 
             // Stop if we've reached the end of the heap
             // Or stop when everything is already in the right position
-            if (left >= heapSize || less(nodeIndex, smallest)){
+            if (left >= heapSize || more(nodeIndex, smallest)){
                 break;
             }
 
@@ -219,9 +226,29 @@ public class PriorityQueue <T extends Comparable<T>> implements PriorityQueueInt
             swim(i);
         }
         return removedData;
-
-
     }
     // --------------------------------------------------------------------------------------------------------------
 
+    public static void main(String[] args){
+        Integer[] test = {2, 10, 22, 1, 4, 6, 10 };
+        PriorityQueueInterface<Integer> pqtest = new PriorityQueue<>(test);
+
+        System.out.println(pqtest.size());
+        System.out.println(pqtest);
+        for(int i = 0; i < pqtest.size(); i++){
+            System.out.println(pqtest.get(i));
+        }
+
+        System.out.println("============================");
+        System.out.println(pqtest.poll());
+        System.out.println(pqtest.poll());
+        System.out.println(pqtest.poll());
+        System.out.println(pqtest.poll());
+        System.out.println(pqtest.poll());
+        System.out.println(pqtest.poll());
+        System.out.println(pqtest.poll());
+        System.out.println(pqtest.poll());
+        System.out.println(pqtest.poll());
+
+    }
 }

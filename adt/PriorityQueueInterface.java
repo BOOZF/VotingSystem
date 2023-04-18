@@ -6,7 +6,7 @@ package adt;
 */
 
 // T extends Comparable <T> because T must be a type parameter where it must support comparison with other instances of its own Type
-public interface PriorityQueueInterface<T extends Comparable<T>> {
+public interface PriorityQueueInterface<T> {
 
     // Adds a new Entry into the Queue
     boolean add(T newEntry);
@@ -15,6 +15,9 @@ public interface PriorityQueueInterface<T extends Comparable<T>> {
     boolean remove(T element);
 
     T removeAt(int index);
+
+    // Get value at index
+    T get(int index);
 
     // Checks if PQ is empty or not
     boolean isEmpty();

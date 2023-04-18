@@ -1,4 +1,4 @@
-package VotingSystem.adt;
+package adt;
 
 public class MyHashMap<K, V> implements HashMapInterface<K, V>{
 

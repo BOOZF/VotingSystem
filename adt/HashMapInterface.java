@@ -1,4 +1,4 @@
-package VotingSystem.adt;
+package adt;
 
 public interface HashMapInterface<K, V> {
 
