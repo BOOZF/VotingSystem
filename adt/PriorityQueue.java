@@ -83,11 +83,11 @@ public class PriorityQueue<T extends Comparable<T>> implements PriorityQueueInte
 
 
     @Override
-    public boolean contains(T element){
+    public boolean contains(T element) {
         boolean contain = false;
 
-        for (int i = 0; i < heapSize; i++){
-            if (this.heap[i].equals(element)){
+        for (int i = 0; i < heapSize; i++) {
+            if (this.heap[i].equals(element)) {
                 contain = true;
             }
         }
