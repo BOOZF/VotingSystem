@@ -12,5 +12,7 @@ public interface AVLTreeInterface<T extends Comparable<T>>{
 
     public boolean contains(T data);
 
+    /* Functions to search for an element */ boolean search(T val);
+
     public AVLTree.List<T> inOrderTraversal();
 }

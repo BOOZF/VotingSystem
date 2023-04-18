@@ -1,5 +1,7 @@
 package adt;
 
+import AVLTreeSpare.AVLTreeV1;
+
 import java.lang.RuntimeException;
 public class AVLTree<T extends Comparable<T>> implements AVLTreeInterface<T> {
     public interface List<T> {
@@ -72,7 +74,7 @@ public class AVLTree<T extends Comparable<T>> implements AVLTreeInterface<T> {
     @Override
     public void insert(T data) throws DuplicateElementException{
         if (contains(data)) {
-            throw new DuplicateElementException("Duplicate element found: " + data);
+            throw new DuplicateElementException("[ " + data + " ] have existed !");
         }
 
         root = insert(root, data);
@@ -256,6 +258,33 @@ public class AVLTree<T extends Comparable<T>> implements AVLTreeInterface<T> {
         } else {
             return true;
         }
+    }
+
+    @Override
+    /* Functions to search for an element */
+    public boolean search(T val)
+    {
+        return search(root, val);
+    }
+
+    private boolean search(Node r, T val)
+    {
+        boolean found = false;
+        while ((r != null) && !found)
+        {
+            T rval = r.data;
+            if (val.compareTo(rval) < 0)
+                r = r.left;
+            else if (val.compareTo(rval) > 0)
+                r = r.right;
+            else
+            {
+                found = true;
+                break;
+            }
+            found = search(r, val);
+        }
+        return found;
     }
 
     @Override
