@@ -5,7 +5,7 @@ import java.util.Objects;
 /**
  * Singer - An entity class representing a singer.
  */
-public class Singer {
+public class Singer implements Comparable<Singer>{
     // Data members
     private String id;
     private String name;
@@ -14,6 +14,9 @@ public class Singer {
     private String songTitles;
     private static int voteCount = 0;
 
+    public Singer(String id) {
+        this(id, "", "", 0, "");
+    }
 
     public Singer(String id, String name, String gender, int age, String songTitles) {
         this.id = id;
@@ -101,5 +104,10 @@ public class Singer {
                 ", age=" + age +
                 ", songTitles='" + songTitles + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Singer o) {
+        return name.compareTo(o.name);
     }
 }

@@ -1,7 +1,5 @@
 package adt;
 
-import AVLTreeSpare.AVLTreeV1;
-
 import java.lang.RuntimeException;
 public class AVLTree<T extends Comparable<T>> implements AVLTreeInterface<T> {
     public interface List<T> {
@@ -74,7 +72,7 @@ public class AVLTree<T extends Comparable<T>> implements AVLTreeInterface<T> {
     @Override
     public void insert(T data) throws DuplicateElementException{
         if (contains(data)) {
-            throw new DuplicateElementException("[ " + data + " ] have existed !");
+            throw new DuplicateElementException("[ " + data.toString() + " ] have existed !");
         }
 
         root = insert(root, data);
