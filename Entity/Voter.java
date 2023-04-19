@@ -2,38 +2,22 @@ package Entity;
 
 public class Voter implements Comparable<Voter> {
 
-    private static int VoterID = 0;
     private static int castVoteNumber = 0; // voter no vote to any singer at 1st
     private String name;
-    private String password;
-    private String ic;
+    private String password; 
+    private String studentID;
     boolean isVote = false;// havent use!!!
 
     // constructor
 
-    public Voter(String name, String password, String ic) {
+    public Voter(String name, String password, String studentID) {
         this.name = name;
         this.password = password;
-        this.ic = ic;
-        VoterID++;
+        this.studentID = studentID;
     }
 
-//    public Voter(String name, String password, String ic) {
-//        this.name = name;
-//        this.password = password;
-//        this.ic = ic;
-//        VoterID++;
-//    }
 
     // setter and getter
-    public static int getVoterID() {
-        return VoterID;
-    }
-
-    public static void setVoterID(int voterID) {
-        VoterID = voterID;
-    }
-
     public static int getCastVoteNumber() {
         return castVoteNumber;
     }
@@ -58,12 +42,12 @@ public class Voter implements Comparable<Voter> {
         this.password = password;
     }
 
-    public String getIc() {
-        return ic;
+    public String getStudentID() {
+        return studentID;
     }
 
-    public void setIc(String ic) {
-        this.ic = ic;
+    public void setStudentID(String ic) {
+        this.studentID = studentID;
     }
 
     public boolean isVote() {
