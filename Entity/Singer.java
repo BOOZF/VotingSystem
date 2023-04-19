@@ -1,5 +1,8 @@
 package Entity;
 
+import adt.DllNode;
+import adt.DoublyLinkListInterface;
+
 import java.util.Objects;
 
 /**
@@ -9,8 +12,9 @@ public class Singer implements Comparable<Singer>{
     // Data members
     private String id;
     private String name;
+    private String icNo;
     private String gender;
-    private int age;
+    private String age;
     private String songTitles;
     private static int voteCount = 0;
 
@@ -18,17 +22,19 @@ public class Singer implements Comparable<Singer>{
 
     }
     public Singer(String id) {
-        this(id, "", "", 0, "");
+        this(id, "","", "", "", "");
     }
 
-    public Singer(String id, String name, String gender, int age, String songTitles) {
+    public Singer(String id, String name, String icNo, String gender, String age, String songTitles) {
         this.id = id;
         this.name = name;
+        this.icNo = icNo;
         this.gender = gender;
         this.age = age;
         this.songTitles = songTitles;
         voteCount++;
     }
+
 
     // Getters
     public String getId() {
@@ -39,11 +45,15 @@ public class Singer implements Comparable<Singer>{
         return name;
     }
 
+    public String getIcNo() {
+        return icNo;
+    }
+
     public String getGender() {
         return gender;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
@@ -55,6 +65,7 @@ public class Singer implements Comparable<Singer>{
         return voteCount;
     }
 
+
     // Setters
     public void setId(String id) {
         this.id = id;
@@ -64,11 +75,15 @@ public class Singer implements Comparable<Singer>{
         this.name = name;
     }
 
+    public void setIcNo(String name) {
+        this.name = name;
+    }
+
     public void setGender(String gender) {
         this.gender = gender;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
@@ -79,6 +94,7 @@ public class Singer implements Comparable<Singer>{
     public void setVoteCount(int voteCount) {
         this.voteCount = voteCount;
     }
+
 
     // Entity methods
     @Override
@@ -111,6 +127,6 @@ public class Singer implements Comparable<Singer>{
 
     @Override
     public int compareTo(Singer o) {
-        this.getVoteCount() > o.getVoteCount()
+        return 0;
     }
 }
