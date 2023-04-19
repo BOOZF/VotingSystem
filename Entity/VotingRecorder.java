@@ -62,4 +62,9 @@ public class VotingRecorder implements Comparable<VotingRecorder> {
         return 0;
     }
 
+    @Override
+    public String toString(){
+        return "Voter : " + this.voter.getName() + " voted for : " + this.singer.getName() ;
+    }
+
 }

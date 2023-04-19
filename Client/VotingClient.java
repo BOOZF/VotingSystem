@@ -9,9 +9,6 @@ import adt.PriorityQueue;
 import Entity.Singer;
 import adt.PriorityQueueInterface;
 
-import java.util.Objects;
-import java.util.Scanner;
-
 
 public class VotingClient {
     private DoublyLinkListInterface<VotingRecorder> voteList = new DllNode<VotingRecorder>();
@@ -30,35 +27,27 @@ public class VotingClient {
                 "4.  Back");
     }
 
-    public void searchSingerVote(){
-        // User is able to search vote by searching for Vote ID. The result will display Voter: xxx, Voted for: xxx on xx/xx/xxxx xx:xx:xx
-        String singerID;
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Please enter the singerID: ");
-        singerID = sc.nextLine();
+    // Search for specific singer and display their votes
+    public void searchSingerVote(String singerID){
+        boolean found = false;
         countSingerVotes();
-        Singer singer = null;
 
-        // Check if id consist in the list or not
-        if(singerList.toString().contains(new Singer(singerID).getId())){
-            for(int i = 0; i<singerList.size(); i++){
-                if(Objects.equals(new Singer(singerID).getId(), singerList.get(i))){
-                    singer = singerList.get(i);
-
-                    System.out.println("===============================================");
-                    System.out.println(String.format("|  Singer ID    :  %-10s                |", singer.getId()));
-                    System.out.println(String.format("|  Singer Name  :  %-30s                |", singer.getName()));
-                    System.out.println(String.format("|  Total Vote   :  %-10d                |", singer.getVoteCount()));
-                    System.out.println("===============================================");
-                }
+        for(int i = 0; i< singerList.size(); i++){
+            if(singerList.get(i).toString().contains(singerID)){
+                System.out.println("===========================================");
+                System.out.println("|   Singer Name : " + singerList.get(i).getName() + "    |");
+                System.out.println("|   Total Votes : " + singerList.get(i).getVoteCount() + "   |");
+                System.out.println("|=================================================");
+                found = true;
             }
-        }else {
-            System.out.println("No singer with such ID Exists !");
         }
 
+        if (!found){
+            System.out.println("Singer Not Found !");
+        }
     }
 
+    // Display the whole ranking for voter to view
     public void displayCurrentResult(){
         countSingerVotes();
         int listSize = singerList.size();
@@ -84,7 +73,7 @@ public class VotingClient {
     public void countSingerVotes(){
 
         // Loops through the votelist
-        for(int i; i<voteList.size(); i++){
+        for(int i=0; i<voteList.size(); i++){
 
             Singer voteSinger = voteList.getEntry(i).getSinger();
             // Register vote into singer vote count
@@ -98,6 +87,31 @@ public class VotingClient {
         }
     }
 
+    // TODO: Implement Voter change vote function
+    public String editVote(Voter voter, Singer singer){
+        int voteIndex = 0;
+        boolean found = false;
+
+        if(!voter.isVote()){
+            return "You have not voted !";
+        }
+
+        for(int i = 0; i< voteList.size(); i++){
+            if(voteList.getEntry(i).getVoter().equals(voter)){
+                voteList.getEntry(i).setSinger(singer);
+                voteIndex = i;
+                found = true;
+            }
+        }
+
+        if(!found){
+            return "Vote not found !";
+        }
+
+        return voteList.getEntry(voteIndex).toString();
+
+
+    }
 
 
 
