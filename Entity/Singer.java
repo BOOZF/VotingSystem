@@ -1,8 +1,5 @@
 package Entity;
 
-import adt.DllNode;
-import adt.DoublyLinkListInterface;
-
 import java.util.Objects;
 
 /**
@@ -12,6 +9,7 @@ public class Singer implements Comparable<Singer>{
     // Data members
     private String id;
     private String name;
+    private String password;
     private String icNo;
     private String gender;
     private String age;
@@ -22,12 +20,13 @@ public class Singer implements Comparable<Singer>{
 
     }
     public Singer(String id) {
-        this(id, "","", "", "", "");
+        this(id, "","", "", "", "", "");
     }
 
-    public Singer(String id, String name, String icNo, String gender, String age, String songTitles) {
+    public Singer(String id, String name, String password, String icNo, String gender, String age, String songTitles) {
         this.id = id;
         this.name = name;
+        this.password = password;
         this.icNo = icNo;
         this.gender = gender;
         this.age = age;
@@ -61,6 +60,10 @@ public class Singer implements Comparable<Singer>{
         return songTitles;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public int getVoteCount() {
         return voteCount;
     }
@@ -89,6 +92,10 @@ public class Singer implements Comparable<Singer>{
 
     public void setSongTitles(String songTitles) {
         this.songTitles = songTitles;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setVoteCount(int voteCount) {
@@ -122,6 +129,7 @@ public class Singer implements Comparable<Singer>{
                 ", gender='" + gender + '\'' +
                 ", age=" + age +
                 ", songTitles='" + songTitles + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 
