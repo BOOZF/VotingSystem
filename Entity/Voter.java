@@ -10,7 +10,7 @@ public class Voter implements Comparable<Voter> {
 
     // constructor
     public Voter(){
-        
+
     }
     public Voter(String name, String password, String studentID) {
         this.name = name;

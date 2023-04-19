@@ -4,6 +4,7 @@ public interface DoublyLinkListInterface <T extends Comparable<T>> {
     public boolean add(T newEntry);
     public boolean remove(T entry);
     public boolean contains(T entry);//Find whether the entry is inside in the list or not?
+    public int size();
     public void clear();
 
     public boolean isEmpty();

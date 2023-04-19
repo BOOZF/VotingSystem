@@ -8,7 +8,7 @@ public class DllNode<T extends Comparable<T>> implements DoublyLinkListInterface
     private DllNode<T> prev; // data type stored in node is T; T can be Voter entity
     private DllNode<T> next;
     private Voter data;
-    private static int size = 0;
+    private int size = 0;
 
     public DllNode(){
         this.data = null;
@@ -20,7 +20,7 @@ public class DllNode<T extends Comparable<T>> implements DoublyLinkListInterface
         this.data = data;
         this.prev = null;
         this.next = null;
-        size++;
+        this.size++;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class DllNode<T extends Comparable<T>> implements DoublyLinkListInterface
             currentNode.next = n;
             n.prev = currentNode;
         }
-        size++;
+        this.size++;
         return true;
     }
 
@@ -72,7 +72,7 @@ public class DllNode<T extends Comparable<T>> implements DoublyLinkListInterface
                     currentNode.prev.next = currentNode.next;
                     currentNode.next.prev = currentNode.prev;
                 }
-                size--;
+                this.size--;
                 return true;
             }
 
@@ -100,18 +100,20 @@ public class DllNode<T extends Comparable<T>> implements DoublyLinkListInterface
         return false;
     }
 
-
-
+    @Override
+    public int size(){
+        return size;
+    }
     @Override       // clear the whole list
     public void clear(){
         next = null;
         prev = null;
-        size = 0;
+        this.size = 0;
     }
 
     @Override       // check if the list is empty
     public boolean isEmpty(){
-        return size == 0;
+        return this.size == 0;
     };
 
     @Override
@@ -137,7 +139,7 @@ public class DllNode<T extends Comparable<T>> implements DoublyLinkListInterface
 
 
     public T getEntry(int index){// Get Entry based on index of list?
-        if (index < 1 || index > size || isEmpty()) {
+        if (index < 1 || index > this.size || isEmpty()) {
             return null;
         }
 
