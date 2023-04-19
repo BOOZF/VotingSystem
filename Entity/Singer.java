@@ -14,6 +14,9 @@ public class Singer implements Comparable<Singer>{
     private String songTitles;
     private static int voteCount = 0;
 
+    public Singer(){
+
+    }
     public Singer(String id) {
         this(id, "", "", 0, "");
     }
@@ -108,6 +111,6 @@ public class Singer implements Comparable<Singer>{
 
     @Override
     public int compareTo(Singer o) {
-        return name.compareTo(o.name);
+        this.getVoteCount() > o.getVoteCount()
     }
 }

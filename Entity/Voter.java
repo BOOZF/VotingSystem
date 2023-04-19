@@ -9,7 +9,9 @@ public class Voter implements Comparable<Voter> {
     boolean isVote = false;// havent use!!!
 
     // constructor
-
+    public Voter(){
+        
+    }
     public Voter(String name, String password, String studentID) {
         this.name = name;
         this.password = password;

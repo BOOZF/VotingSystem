@@ -1,6 +1,6 @@
 package Entity;
 
-public class VotingRecorder {
+public class VotingRecorder implements Comparable<VotingRecorder> {
 
     // To keep track on who voted for who
     private Voter voter;
@@ -56,5 +56,10 @@ public class VotingRecorder {
     }
     // ======================================================================================================================
 
-    // TODO: add Count vote for each singer
+    // TODO: Implement compareTo properly
+    @Override
+    public int compareTo(VotingRecorder o) {
+        return 0;
+    }
+
 }
