@@ -1,5 +1,7 @@
 package adt;
 
+// Name : Cheok Jia Wei
+// Student ID : 21WMR12521
 
 
 public class PriorityQueue<T extends Comparable<T>> implements PriorityQueueInterface<T> {
@@ -21,6 +23,7 @@ public class PriorityQueue<T extends Comparable<T>> implements PriorityQueueInte
     // This initializes an empty heap list with specified capacity
     public PriorityQueue(int size){
         heap = (T[]) new Comparable[size];
+        this.heapCapacity = size;
     }
 
     // Construct a heap with elements (Array) provided
@@ -111,12 +114,20 @@ public class PriorityQueue<T extends Comparable<T>> implements PriorityQueueInte
         if (heapSize < heapCapacity){
             heap[heapSize] = newEntry;
         }else {
-            heapCapacity++;
-            heap[heapCapacity] = newEntry;
+            this.heapCapacity++;
+            T[] temp = (T[]) new Comparable[heapCapacity];
+
+            for(int i = 0; i < heapSize; i++){
+                temp[i] = heap[i];
+            }
+
+            heap = temp;
+
+            heap[heapCapacity - 1] = newEntry;
         }
         // Adds the new Entry to the binary heap node following the sequence
         swim(heapSize);
-        heapSize++;
+        this.heapSize++;
         return true;
     }
 
@@ -129,7 +140,9 @@ public class PriorityQueue<T extends Comparable<T>> implements PriorityQueueInte
 
     private boolean more(int i, int j){
         // Checks the nodes are valid or not by comparing them
-
+        if(heap[i] == null || heap[j]==null){
+            System.out.println("BREAKKKKKK");
+        }
         T node1 = heap[i];
         T node2 = heap[j];
         return node1.compareTo(node2) >= 0;
@@ -228,27 +241,4 @@ public class PriorityQueue<T extends Comparable<T>> implements PriorityQueueInte
         return removedData;
     }
     // --------------------------------------------------------------------------------------------------------------
-
-    public static void main(String[] args){
-        Integer[] test = {2, 10, 22, 1, 4, 6, 10 };
-        PriorityQueueInterface<Integer> pqtest = new PriorityQueue<>(test);
-
-        System.out.println(pqtest.size());
-        System.out.println(pqtest);
-        for(int i = 0; i < pqtest.size(); i++){
-            System.out.println(pqtest.get(i));
-        }
-
-        System.out.println("============================");
-        System.out.println(pqtest.poll());
-        System.out.println(pqtest.poll());
-        System.out.println(pqtest.poll());
-        System.out.println(pqtest.poll());
-        System.out.println(pqtest.poll());
-        System.out.println(pqtest.poll());
-        System.out.println(pqtest.poll());
-        System.out.println(pqtest.poll());
-        System.out.println(pqtest.poll());
-
-    }
 }

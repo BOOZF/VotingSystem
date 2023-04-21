@@ -1,10 +1,6 @@
 package adt;
-/*
-*
-*  Author: Cheok Jia Wei 21WMR12521
-*
-*/
-
+// Name : Cheok Jia Wei
+// Student ID : 21WMR12521
 // T extends Comparable <T> because T must be a type parameter where it must support comparison with other instances of its own Type
 public interface PriorityQueueInterface<T> {
 

@@ -1,5 +1,9 @@
 package Entity;
 
+import adt.DoublyLinkList;
+import adt.DoublyLinkListInterface;
+// Name : Cheok Jia Wei
+// Student ID : 21WMR12521
 public class VotingRecorder implements Comparable<VotingRecorder> {
 
     // To keep track on who voted for who
@@ -7,6 +11,8 @@ public class VotingRecorder implements Comparable<VotingRecorder> {
     private Singer singer;
     private boolean isCounted;
     public static int totalVotes;
+
+    public static DoublyLinkListInterface<DeleteHistory> historyList = new DoublyLinkList<DeleteHistory>();
 
 
     // Empty Constructor =======================================================================================================
@@ -37,6 +43,11 @@ public class VotingRecorder implements Comparable<VotingRecorder> {
     public void setIsCounted(boolean bool){
         this.isCounted = bool;
     }
+
+    public static void setHistoryList(DoublyLinkListInterface<DeleteHistory> historyList) {
+        VotingRecorder.historyList = historyList;
+    }
+
     // ======================================================================================================================
     // Getter ===============================================================================================================
     public Voter getVoter(){
@@ -54,11 +65,21 @@ public class VotingRecorder implements Comparable<VotingRecorder> {
     public int getTotalVotes(){
         return totalVotes;
     }
+
+    public static DoublyLinkListInterface<DeleteHistory> getHistoryList() {
+        return historyList;
+    }
+
     // ======================================================================================================================
 
-    // TODO: Implement compareTo properly
+
+    public static void addVoteHistory(DeleteHistory v){
+        historyList.add(v);
+    }
+
     @Override
     public int compareTo(VotingRecorder o) {
+
         return 0;
     }
 

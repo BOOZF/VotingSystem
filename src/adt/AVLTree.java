@@ -1,6 +1,9 @@
 package adt;
 
 import java.lang.RuntimeException;
+
+// Author     : Boo Zheng Feng
+// Student ID : 21WMR12518
 public class AVLTree<T extends Comparable<T>> implements AVLTreeInterface<T> {
     public interface List<T> {
         public void add(T element);

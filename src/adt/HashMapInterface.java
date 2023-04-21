@@ -1,5 +1,6 @@
 package adt;
-
+// Name : Tan Jun Keat
+// ID   : 21WMR12547
 public interface HashMapInterface<K, V> {
 
     void put(K key, V value);

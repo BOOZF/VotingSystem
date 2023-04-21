@@ -1,7 +1,12 @@
 package Entity;
 
-import java.util.Objects;
+import adt.AVLTree;
+import adt.HashMapInterface;
+import adt.MyHashMap;
 
+import java.util.Objects;
+// Name : Tan Jun Keat
+// ID   : 21WMR12547
 /**
  * Singer - An entity class representing a singer.
  */
@@ -13,25 +18,24 @@ public class Singer implements Comparable<Singer>{
     private String icNo;
     private String gender;
     private String age;
-    private String songTitles;
-    private static int voteCount = 0;
+    private HashMapInterface<String, Song> songs;
+    private int voteCount = 0;
 
     public Singer(){
 
     }
     public Singer(String id) {
-        this(id, "","", "", "", "", "");
+        this(id, "","", "", "", "");
     }
 
-    public Singer(String id, String name, String password, String icNo, String gender, String age, String songTitles) {
+    public Singer(String id, String name, String password, String icNo, String gender, String age) {
         this.id = id;
         this.name = name;
         this.password = password;
         this.icNo = icNo;
         this.gender = gender;
         this.age = age;
-        this.songTitles = songTitles;
-        voteCount++;
+        this.songs = new MyHashMap<String, Song>();
     }
 
 
@@ -56,8 +60,8 @@ public class Singer implements Comparable<Singer>{
         return age;
     }
 
-    public String getSongTitles() {
-        return songTitles;
+    public HashMapInterface<String, Song> getSongs() {
+        return songs;
     }
 
     public String getPassword() {
@@ -90,8 +94,8 @@ public class Singer implements Comparable<Singer>{
         this.age = age;
     }
 
-    public void setSongTitles(String songTitles) {
-        this.songTitles = songTitles;
+    public void setSongs(HashMapInterface<String, Song> songs) {
+        this.songs = songs;
     }
 
     public void setPassword(String password) {
@@ -102,6 +106,10 @@ public class Singer implements Comparable<Singer>{
         this.voteCount = voteCount;
     }
 
+    public void addSong(String SongID, String title, String category, String producedBy) {
+        Song song = new Song(SongID, title, category, producedBy);
+        songs.put(SongID, song); // Add song to the HashMap
+    }
 
     // Entity methods
     @Override
@@ -128,13 +136,12 @@ public class Singer implements Comparable<Singer>{
                 ", name='" + name + '\'' +
                 ", gender='" + gender + '\'' +
                 ", age=" + age +
-                ", songTitles='" + songTitles + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
 
     @Override
     public int compareTo(Singer o) {
-        return 0;
+        return Integer.compare(this.voteCount, o.voteCount);
     }
 }

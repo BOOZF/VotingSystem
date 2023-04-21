@@ -1,5 +1,6 @@
 package adt;
-
+// Name : Tan Jun Keat
+// ID   : 21WMR12547
 public class MyHashMap<K, V> implements HashMapInterface<K, V>{
 
     private static final int DEFAULT_CAPACITY = 16;
